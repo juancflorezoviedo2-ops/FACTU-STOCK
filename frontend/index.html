@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FACTU-STOCK</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 80px; background: #f4f6f8; }
+    h1 { color: #1a73e8; font-size: 48px; }
+    p { font-size: 18px; color: #333; }
+    .caja { background: white; padding: 30px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    button { padding: 12px 20px; font-size: 16px; background: #1a73e8; color: white; border: none; border-radius: 8px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="caja">
+    <h1>FACTU-STOCK</h1>
+    <p>Sistema de Facturación e Inventario</p>
+    <p id="estado">Conectando con el servidor...</p>
+    <button onclick="probar()">Probar conexión</button>
+  </div>
+
+  <script>
+    async function probar() {
+      const res = await fetch('/api/salud');
+      const data = await res.json();
+      document.getElementById('estado').innerText = '✅ ' + data.mensaje;
+    }
+    probar();
+  </script>
+</body>
+</html>
